@@ -1,4 +1,5 @@
 # h5upload-with-cropper
+上传图片前先压缩再裁剪，输出base64图片
 #前端框架
 Light7：http://www.light7.cn/
 轻量，小巧且精美的UI库，方便迅速搭建手机H5应用

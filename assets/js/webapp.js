@@ -183,11 +183,12 @@
                             	// console.log($self.find("input[name=" + opt.name+ "]:last").data('base64'));
                             	//newfile();
                             	
+                                //$image.cropper("destroy");
+                                $image.cropper("reset");
+                                $('.popup-cropper').find('.cropper-preview').empty();
+                                $.closeModal('.popup-cropper');
                             	setTimeout(function(){
-                            		//$image.cropper("destroy");
-                            		$image.cropper("reset");
-                            		$('.popup-cropper').find('.cropper-preview').empty();
-                            		$.closeModal('.popup-cropper');
+                            		$.hidePreloader();
                             		$plus.before($imgdiv.append($imgclose));
                             		$self.find("input[name=" + opt.name+ "]:last").data('base64', croppedCanvas.toDataURL());
                             		console.log($self.find("input[name=" + opt.name+ "]:last").data('base64'));
@@ -197,13 +198,13 @@
                         	});
                         })
 						.catch(function (err) {
-            				// 处理失败会执行
-            				$.showPreloader('图片加载失败，请重试！');
-            				setTimeout(function () {
-        						$.hidePreloader();
-    						}, 2000);
-    						$.closeModal('.popup-cropper');
-        				})
+                            // 处理失败会执行
+                            $.closeModal('.popup-cropper');
+                            $.showPreloader('图片加载失败，请重试！');
+                            setTimeout(function () {
+                                $.hidePreloader();
+                            }, 2000);
+                        })
         				.always(function () {
             				// 不管是成功失败，都会执行
         				});
